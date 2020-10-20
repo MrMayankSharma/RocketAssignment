@@ -1,0 +1,65 @@
+<html>
+    <head>   
+        <link href="rocket.css" rel="stylesheet" type="text/css">
+        <title>Sock Pair Calculator</title>
+    </head>
+    <body>
+        <div id="container">
+            <div id="header">
+                <h1>Sock Pair Calculator</h1>
+            </div>
+            <div id="content">
+        <p id="person"> </p><br>
+        <p id="para1"> We will help you to calculate the number of pairs of socks you have. <br>Just enter the details below and leave the rest to us. </p>
+                <ul>
+                    <p>Enter the <em>&nbsp;number of socks </em> &nbsp;you have: &nbsp; 
+                    <input type="number" id="amount" name="amount" placeholder="The number of socks" ></p><br>
+                    <p>Enter the&nbsp;<em>array of socks colors separated by spaces: &nbsp; </em> 
+                    <input type="text" id="array" onkeypress="return isInputNumber(event)" name="array" placeholder="The array of sock colors"></p><br>
+                </ul>
+                <button onclick="fn1()" id="btn1"><span>  Calculate!  </span></button>
+                <br><br>
+                <p><b>NOTE: &nbsp;</b> Only numeric values are allowed </p>
+                <script>
+                function isInputNumber(evt){
+                    var ASCIICode = (evt.which) ? evt.which : evt.keyCode 
+                if ((ASCIICode > 47 && ASCIICode < 58) || (ASCIICode == 32))
+                    return true; 
+                return false;       
+                }
+                </script>
+                <script type=text/javascript> 
+            var name = prompt("Enter your name here:");
+            if (name != null){
+                document.getElementById("person").innerHTML = "Welcome "+name+"!";
+            }
+            var  arr = [];
+            var count = 0;
+            var i;
+            function fn1(){
+            var amount = document.getElementById("amount").value;
+            arr = document.getElementById("array").value;
+            arr = arr.split(" ").sort();
+            
+            if(amount == arr.length && amount > 1){
+                for (i=0;i<arr.length;i++){
+                if(arr[i]===arr[i+1]){
+                    count++;
+	                i += 1;
+                    }
+            }
+                alert("Pairs possible: "+count);
+            }
+            else if(amount != arr.length){
+                alert("Input Error! Try again. Pairs made: 0 ")
+            }
+            
+            else{
+                alert("Input Error! Atleast 2 socks are required to make a pair. Pairs possible : 0");
+            }
+            }
+        </script>
+            </div>
+        </div>        
+    </body>
+</html>
